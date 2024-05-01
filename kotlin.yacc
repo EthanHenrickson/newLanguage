@@ -1,15 +1,21 @@
 %{
 #include <stdio.h>
-
 int regs[26];
 int base;
 
+void yyerror(char *s);
+int yywrap();
+int yylex();
+/******* commands ************
+
+yacc -d calc.y
+lex calc.l
+cc y.tab.c lex.yy.c
+
+*******************************/
 %}
-
 %start list
-
 %token DIGIT LETTER
-
 %left '|'
 %left '&'
 %left '+' '-'
@@ -17,7 +23,6 @@ int base;
 %left UMINUS  /*supplies precedence for unary minus */
 
 %%                   /* beginning of rules section */
-
 list:                       /*empty */
          |
         list stat '\n'
@@ -27,7 +32,6 @@ list:                       /*empty */
            yyerrok;
          }
          ;
-
 stat:    expr
          {
            printf("%d\n",$1);
@@ -37,9 +41,7 @@ stat:    expr
          {
            regs[$1] = $3;
          }
-
          ;
-
 expr:    '(' expr ')'
          {
            $$ = $2;
@@ -65,7 +67,6 @@ expr:    '(' expr ')'
            $$ = $1 + $3;
          }
           |
-
          expr '-' expr
          {
            $$ = $1 - $3;
@@ -81,7 +82,6 @@ expr:    '(' expr ')'
            $$ = $1 | $3;
          }
          |
-
         '-' expr %prec UMINUS
          {
            $$ = -$2;
@@ -91,11 +91,9 @@ expr:    '(' expr ')'
          {
            $$ = regs[$1];
          }
-
          |
          number
          ;
-
 number:  DIGIT
          {
            $$ = $1;
@@ -106,20 +104,16 @@ number:  DIGIT
            $$ = base * $1 + $2;
          }
          ;
-
 %%
-main()
+int main()
 {
  return(yyparse());
 }
-
-yyerror(s)
-char *s;
+void yyerror(char *s)
 {
   fprintf(stderr, "%s\n",s);
 }
-
-yywrap()
+int yywrap()
 {
   return(1);
 }

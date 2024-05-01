@@ -39,15 +39,15 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     IDENTIFIER = 258,
-     VAL = 259,
-     INT = 260
+     DIGIT = 258,
+     LETTER = 259,
+     UMINUS = 260
    };
 #endif
 /* Tokens.  */
-#define IDENTIFIER 258
-#define VAL 259
-#define INT 260
+#define DIGIT 258
+#define LETTER 259
+#define UMINUS 260
 
 
 

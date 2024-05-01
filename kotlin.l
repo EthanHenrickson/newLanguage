@@ -1,5 +1,5 @@
 %{
- 
+
 #include <stdio.h>
 #include "y.tab.h"
 int c;
@@ -17,3 +17,7 @@ extern int yylval;
             yylval = c - '0';
             return(DIGIT);
           }
+[^a-z0-9\b]    {
+                 c = yytext[0];
+                 return(c);
+               }

@@ -1,3 +1,3 @@
 flex kotlin.l
-bison -dy kotlin.y
-gcc lex.yy.c y.tab.c hello.exe
+bison -d kotlin.yacc
+gcc -o output_program lex.yy.c parser.tab.c

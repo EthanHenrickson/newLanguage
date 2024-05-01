@@ -71,14 +71,23 @@
 #line 1 "kotlin.yacc"
 
 #include <stdio.h>
-
 int regs[26];
 int base;
 
+void yyerror(char *s);
+int yywrap();
+int yylex();
+/******* commands ************
+
+yacc -d calc.y
+lex calc.l
+cc y.tab.c lex.yy.c
+
+*******************************/
 
 
 /* Line 189 of yacc.c  */
-#line 82 "kotlin.tab.cacc"
+#line 91 "kotlin.tab.cacc"
 
 /* Enabling traces.  */
 #ifndef YYDEBUG
@@ -125,7 +134,7 @@ typedef int YYSTYPE;
 
 
 /* Line 264 of yacc.c  */
-#line 129 "kotlin.tab.cacc"
+#line 138 "kotlin.tab.cacc"
 
 #ifdef short
 # undef short
@@ -414,8 +423,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    21,    21,    23,    25,    31,    36,    43,    48,    53,
-      58,    63,    69,    74,    79,    85,    90,    96,    99,   104
+       0,    26,    26,    28,    30,    35,    40,    45,    50,    55,
+      60,    65,    70,    75,    80,    85,    90,    95,    97,   102
 };
 #endif
 
@@ -1336,7 +1345,7 @@ yyreduce:
         case 4:
 
 /* Line 1455 of yacc.c  */
-#line 26 "kotlin.yacc"
+#line 31 "kotlin.yacc"
     {
            yyerrok;
          ;}
@@ -1345,7 +1354,7 @@ yyreduce:
   case 5:
 
 /* Line 1455 of yacc.c  */
-#line 32 "kotlin.yacc"
+#line 36 "kotlin.yacc"
     {
            printf("%d\n",(yyvsp[(1) - (1)]));
          ;}
@@ -1354,7 +1363,7 @@ yyreduce:
   case 6:
 
 /* Line 1455 of yacc.c  */
-#line 37 "kotlin.yacc"
+#line 41 "kotlin.yacc"
     {
            regs[(yyvsp[(1) - (3)])] = (yyvsp[(3) - (3)]);
          ;}
@@ -1363,7 +1372,7 @@ yyreduce:
   case 7:
 
 /* Line 1455 of yacc.c  */
-#line 44 "kotlin.yacc"
+#line 46 "kotlin.yacc"
     {
            (yyval) = (yyvsp[(2) - (3)]);
          ;}
@@ -1372,7 +1381,7 @@ yyreduce:
   case 8:
 
 /* Line 1455 of yacc.c  */
-#line 49 "kotlin.yacc"
+#line 51 "kotlin.yacc"
     {
            (yyval) = (yyvsp[(1) - (3)]) * (yyvsp[(3) - (3)]);
          ;}
@@ -1381,7 +1390,7 @@ yyreduce:
   case 9:
 
 /* Line 1455 of yacc.c  */
-#line 54 "kotlin.yacc"
+#line 56 "kotlin.yacc"
     {
            (yyval) = (yyvsp[(1) - (3)]) / (yyvsp[(3) - (3)]);
          ;}
@@ -1390,7 +1399,7 @@ yyreduce:
   case 10:
 
 /* Line 1455 of yacc.c  */
-#line 59 "kotlin.yacc"
+#line 61 "kotlin.yacc"
     {
            (yyval) = (yyvsp[(1) - (3)]) % (yyvsp[(3) - (3)]);
          ;}
@@ -1399,7 +1408,7 @@ yyreduce:
   case 11:
 
 /* Line 1455 of yacc.c  */
-#line 64 "kotlin.yacc"
+#line 66 "kotlin.yacc"
     {
            (yyval) = (yyvsp[(1) - (3)]) + (yyvsp[(3) - (3)]);
          ;}
@@ -1408,7 +1417,7 @@ yyreduce:
   case 12:
 
 /* Line 1455 of yacc.c  */
-#line 70 "kotlin.yacc"
+#line 71 "kotlin.yacc"
     {
            (yyval) = (yyvsp[(1) - (3)]) - (yyvsp[(3) - (3)]);
          ;}
@@ -1417,7 +1426,7 @@ yyreduce:
   case 13:
 
 /* Line 1455 of yacc.c  */
-#line 75 "kotlin.yacc"
+#line 76 "kotlin.yacc"
     {
            (yyval) = (yyvsp[(1) - (3)]) & (yyvsp[(3) - (3)]);
          ;}
@@ -1426,7 +1435,7 @@ yyreduce:
   case 14:
 
 /* Line 1455 of yacc.c  */
-#line 80 "kotlin.yacc"
+#line 81 "kotlin.yacc"
     {
            (yyval) = (yyvsp[(1) - (3)]) | (yyvsp[(3) - (3)]);
          ;}
@@ -1453,7 +1462,7 @@ yyreduce:
   case 18:
 
 /* Line 1455 of yacc.c  */
-#line 100 "kotlin.yacc"
+#line 98 "kotlin.yacc"
     {
            (yyval) = (yyvsp[(1) - (1)]);
            base = ((yyvsp[(1) - (1)])==0) ? 8 : 10;
@@ -1463,7 +1472,7 @@ yyreduce:
   case 19:
 
 /* Line 1455 of yacc.c  */
-#line 105 "kotlin.yacc"
+#line 103 "kotlin.yacc"
     {
            (yyval) = base * (yyvsp[(1) - (2)]) + (yyvsp[(2) - (2)]);
          ;}
@@ -1472,7 +1481,7 @@ yyreduce:
 
 
 /* Line 1455 of yacc.c  */
-#line 1476 "kotlin.tab.cacc"
+#line 1485 "kotlin.tab.cacc"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1684,20 +1693,18 @@ yyreturn:
 
 
 /* Line 1675 of yacc.c  */
-#line 110 "kotlin.yacc"
+#line 107 "kotlin.yacc"
 
-main()
+int main()
 {
  return(yyparse());
 }
-
-yyerror(s)
-char *s;
+void yyerror(char *s)
 {
   fprintf(stderr, "%s\n",s);
 }
-
-yywrap()
+int yywrap()
 {
   return(1);
 }
+
