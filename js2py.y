@@ -46,23 +46,23 @@ function_declaration:
 
 statement_list:
     /* empty */ { $$ = strdup(""); }
-    | statement_list statement { char *temp; asprintf(&temp, "    %s    %s", $1, $2); $$ = temp; }
+    | statement_list statement { char *temp; asprintf(&temp, "%s    %s", $1, $2); $$ = temp; }
     ;
 
 variable_declaration:
-    LET IDENTIFIER ASSIGN expression SEMICOLON { asprintf(&$$, "    %s = %s\n", $2, $4); printf("%s", $$); }
-    | VAR IDENTIFIER ASSIGN expression SEMICOLON { asprintf(&$$, "    %s = %s\n", $2, $4); printf("%s", $$); }
-    | CONST IDENTIFIER ASSIGN expression SEMICOLON { asprintf(&$$, "    %s = %s\n", $2, $4); printf("%s", $$); }
+    LET IDENTIFIER ASSIGN expression SEMICOLON { asprintf(&$$, "%s = %s\n", $2, $4); printf("%s", $$); }
+    | VAR IDENTIFIER ASSIGN expression SEMICOLON { asprintf(&$$, "%s = %s\n", $2, $4); printf("%s", $$); }
+    | CONST IDENTIFIER ASSIGN expression SEMICOLON { asprintf(&$$, "%s = %s\n", $2, $4); printf("%s", $$); }
     | IDENTIFIER ASSIGN expression SEMICOLON { asprintf(&$$, "%s\n", $3); }
     ;
 
 if_statement:
-    IF LEFT_PAREN expression RIGHT_PAREN LEFT_BRACE statement_list RIGHT_BRACE { asprintf(&$$, "\n    if %s:\n%s", $3, $6); printf("%s", $$); }
-    | IF LEFT_PAREN expression RIGHT_PAREN LEFT_BRACE statement_list RIGHT_BRACE ELSE LEFT_BRACE statement_list RIGHT_BRACE { asprintf(&$$, "    if %s:\n%s    else:\n%s", $3, $6, $10); printf("%s", $$); }
+    IF LEFT_PAREN expression RIGHT_PAREN LEFT_BRACE statement_list RIGHT_BRACE { asprintf(&$$, "\nif %s:\n%s", $3, $6); printf("%s", $$); }
+    | IF LEFT_PAREN expression RIGHT_PAREN LEFT_BRACE statement_list RIGHT_BRACE ELSE LEFT_BRACE statement_list RIGHT_BRACE { asprintf(&$$, "if %s:\n%selse:\n%s", $3, $6, $10); printf("%s", $$); }
     ;
 
 while_statement:
-    WHILE LEFT_PAREN expression RIGHT_PAREN LEFT_BRACE statement_list RIGHT_BRACE { asprintf(&$$, "    while %s:\n%s", $3, $6); printf("%s", $$); }
+    WHILE LEFT_PAREN expression RIGHT_PAREN LEFT_BRACE statement_list RIGHT_BRACE { asprintf(&$$, "while %s:\n%s", $3, $6); printf("%s", $$); }
     ;
 
 

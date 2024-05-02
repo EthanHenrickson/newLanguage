@@ -1548,28 +1548,28 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 49 "js2py.y"
-    { char *temp; asprintf(&temp, "    %s    %s", (yyvsp[(1) - (2)].str), (yyvsp[(2) - (2)].str)); (yyval.str) = temp; }
+    { char *temp; asprintf(&temp, "%s    %s", (yyvsp[(1) - (2)].str), (yyvsp[(2) - (2)].str)); (yyval.str) = temp; }
     break;
 
   case 13:
 
 /* Line 1455 of yacc.c  */
 #line 53 "js2py.y"
-    { asprintf(&(yyval.str), "    %s = %s\n", (yyvsp[(2) - (5)].str), (yyvsp[(4) - (5)].str)); printf("%s", (yyval.str)); }
+    { asprintf(&(yyval.str), "%s = %s\n", (yyvsp[(2) - (5)].str), (yyvsp[(4) - (5)].str)); printf("%s", (yyval.str)); }
     break;
 
   case 14:
 
 /* Line 1455 of yacc.c  */
 #line 54 "js2py.y"
-    { asprintf(&(yyval.str), "    %s = %s\n", (yyvsp[(2) - (5)].str), (yyvsp[(4) - (5)].str)); printf("%s", (yyval.str)); }
+    { asprintf(&(yyval.str), "%s = %s\n", (yyvsp[(2) - (5)].str), (yyvsp[(4) - (5)].str)); printf("%s", (yyval.str)); }
     break;
 
   case 15:
 
 /* Line 1455 of yacc.c  */
 #line 55 "js2py.y"
-    { asprintf(&(yyval.str), "    %s = %s\n", (yyvsp[(2) - (5)].str), (yyvsp[(4) - (5)].str)); printf("%s", (yyval.str)); }
+    { asprintf(&(yyval.str), "%s = %s\n", (yyvsp[(2) - (5)].str), (yyvsp[(4) - (5)].str)); printf("%s", (yyval.str)); }
     break;
 
   case 16:
@@ -1583,21 +1583,21 @@ yyreduce:
 
 /* Line 1455 of yacc.c  */
 #line 60 "js2py.y"
-    { asprintf(&(yyval.str), "\n    if %s:\n%s", (yyvsp[(3) - (7)].str), (yyvsp[(6) - (7)].str)); printf("%s", (yyval.str)); }
+    { asprintf(&(yyval.str), "\nif %s:\n%s", (yyvsp[(3) - (7)].str), (yyvsp[(6) - (7)].str)); printf("%s", (yyval.str)); }
     break;
 
   case 18:
 
 /* Line 1455 of yacc.c  */
 #line 61 "js2py.y"
-    { asprintf(&(yyval.str), "    if %s:\n%s    else:\n%s", (yyvsp[(3) - (11)].str), (yyvsp[(6) - (11)].str), (yyvsp[(10) - (11)].str)); printf("%s", (yyval.str)); }
+    { asprintf(&(yyval.str), "if %s:\n%selse:\n%s", (yyvsp[(3) - (11)].str), (yyvsp[(6) - (11)].str), (yyvsp[(10) - (11)].str)); printf("%s", (yyval.str)); }
     break;
 
   case 19:
 
 /* Line 1455 of yacc.c  */
 #line 65 "js2py.y"
-    { asprintf(&(yyval.str), "    while %s:\n%s", (yyvsp[(3) - (7)].str), (yyvsp[(6) - (7)].str)); printf("%s", (yyval.str)); }
+    { asprintf(&(yyval.str), "while %s:\n%s", (yyvsp[(3) - (7)].str), (yyvsp[(6) - (7)].str)); printf("%s", (yyval.str)); }
     break;
 
   case 20:
