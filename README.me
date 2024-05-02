@@ -1,3 +1,4 @@
-flex kotlin.l
-bison -d kotlin.yacc
+flex js2py.l
+bison -dy js2py.y
 gcc -o output_program lex.yy.c y.tab.c
+./output_program sample.js
